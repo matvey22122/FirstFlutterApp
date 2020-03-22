@@ -5,7 +5,14 @@ void main() => runApp(MaterialApp(
   home: Card(),
 ));
 
-class Card extends StatelessWidget {
+class Card extends StatefulWidget {
+  @override
+  _CardState createState() => _CardState();
+}
+
+class _CardState extends State<Card> {
+
+  int programmingLevel = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +22,15 @@ class Card extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            programmingLevel += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
@@ -58,7 +74,7 @@ class Card extends StatelessWidget {
             ),
             SizedBox(height: 10.0,),
             Text(
-              'over 80',
+              '$programmingLevel',
               style: TextStyle(
                   color: Colors.amberAccent[200],
                   letterSpacing: 2.0,
@@ -90,3 +106,4 @@ class Card extends StatelessWidget {
     );
   }
 }
+
